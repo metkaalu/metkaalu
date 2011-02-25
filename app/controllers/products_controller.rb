@@ -1,8 +1,11 @@
 class ProductsController < ApplicationController
   # GET /products
   # GET /products.xml
+
+  before_filter :find_store
+
   def index
-    @products = Product.all
+    @products = Product.where(:store_id => @store.id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +27,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   # GET /products/new.xml
   def new
-    @product = Product.new
+    @product = Product.new(:store_id => @store.id)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +47,8 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to(@product, :notice => 'Product was successfully created.') }
+        flash[:notice] = 'Product was successfully created.'
+        format.html { redirect_to(:action => 'index', :store_id => @store.id) }
         format.xml  { render :xml => @product, :status => :created, :location => @product }
       else
         format.html { render :action => "new" }
@@ -60,7 +64,8 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
-        format.html { redirect_to(@product, :notice => 'Product was successfully updated.') }
+        flash[:notice] = 'Product was successfully updated.'
+        format.html { redirect_to(:action => 'index', :store_id => @store.id) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,6 +83,13 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(products_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  private
+  def find_store
+    if params[:store_id]
+      @store = Store.find_by_id(params[:store_id])
     end
   end
 end

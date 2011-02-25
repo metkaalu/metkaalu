@@ -17,9 +17,9 @@
     <td><%= product.description %></td>
     <td><%= product.price %></td>
     <td><%= product.category %></td>
-    <td><%= link_to 'Show', product %></td>
-    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-    <td><%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to('Show', {:action => 'show', :id => product.id, :store_id => @store.id}) %></td>
+    <td><%= link_to('Edit', {:action => 'edit', :id => product.id, :store_id => @store.id}) %></td>
+    <td><%= link_to('Destroy', {:action => 'edit', :id => product.id, :store_id => @store.id}, :confirm => 'Are you sure?', :method => :delete) %></td>
   </tr>
 <% end %>
 </table>

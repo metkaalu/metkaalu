@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Metkaalu::Application.config.secret_token = '8d7dc94d7de90cc0b1d943e2e8bfc6872f2abb4f80d72e828a58224f76bd491b85f051ba505c71935cb0a10b4a260870022c53253e3abd7dd126a28242ce7558'
+Metkaalu::Application.config.secret_token = 'edd71085eabef62a9c9544ec50c0824df80913fb451622cd76fe41819c4aa4c24ce17cdd30cd11c56ba44acf6f70ffa017bbd83f7ac2eaa87a3751e5f3785ccc'

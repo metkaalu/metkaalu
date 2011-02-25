@@ -1,4 +1,6 @@
 Metkaalu::Application.routes.draw do
+  resources :products
+
   resources :stores
 
   # The priority is based upon order of creation:

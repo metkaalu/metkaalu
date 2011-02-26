@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+<%= link_to 'Show', [@store, @product] %> |
+<%= link_to 'Back', store_products_path(@store) %>

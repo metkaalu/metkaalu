@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
   # GET /products/new.xml
   def new
     @product = Product.new(:store_id => @store.id)
-
+        
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @product }
@@ -43,7 +43,8 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.xml
   def create
-    @product = Product.new(params[:product])
+    # @product = Product.new(params[:product])
+    @product = @store.products.new(params[:product])
 
     respond_to do |format|
       if @product.save
@@ -81,7 +82,7 @@ class ProductsController < ApplicationController
     @product.destroy
 
     respond_to do |format|
-      format.html { redirect_to(products_url) }
+      format.html { redirect_to(store_products_url) }
       format.xml  { head :ok }
     end
   end

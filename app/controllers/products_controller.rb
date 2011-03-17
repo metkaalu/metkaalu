@@ -5,7 +5,8 @@ class ProductsController < ApplicationController
   before_filter :find_store
 
   def index
-    @products = Product.where(:store_id => @store.id)
+    @products = Product.search(params[:query], params[:store_id])
+    # @products = Product.where(:store_id => @store.id)
 
     respond_to do |format|
       format.html # index.html.erb

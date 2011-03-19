@@ -40,7 +40,12 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
-    mysql2 (0.2.6)
+
+    mysql (2.8.1-x86-mingw32)
+    paperclip (2.3.8)
+      activerecord
+      activesupport
+
     polyglot (0.3.1)
     rack (1.2.2)
     rack-mount (0.6.13)
@@ -70,5 +75,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+<<<<<<< HEAD
+  mysql
+  paperclip
+  rails (= 3.0.5)
+=======
   mysql2
   rails (= 3.0.0)
+>>>>>>> 29156a4a2dd76baef9eadaf3c5248bd326efd9b2

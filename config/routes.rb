@@ -1,8 +1,6 @@
 Metkaalu::Application.routes.draw do
 
-  #get "access/menu"
-
-  #get "access/login"
+  get "product_images/product_image"
 
   resources :stores do
     resources :products

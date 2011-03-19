@@ -1,9 +1,100 @@
-body { background-color: #fff; color: #333; }
+body { background: #E8E8F0 url(/images/bg.png) top left repeat; color: #333;}
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size:   13px;
   line-height: 18px;
+}
+
+
+
+#main{
+	width:940px;
+	margin:40px auto;
+	padding:0;
+	color:#182945;
+}
+#main h1{
+	font: 22px normal Arial, Helvetica, sans-serif;
+}
+#header{
+	margin:40px auto;
+}
+
+.port{
+	overflow: hidden;
+	margin:40px 0px;
+	padding:22px;
+	background-color:#A1C436;
+	-moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    border-radius: 20px;
+}
+.product{
+	position:relative;
+	font: 16px normal Arial, Helvetica, sans-serif;
+	margin:22px;
+	width:175px;
+	height:175px;
+	float:left;
+	background-color:#FFF;
+	border: 2px solid #46A5E5;
+	-moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    border-radius: 20px;
+}
+.store{
+	position:relative;
+	font: 16px normal Arial, Helvetica, sans-serif;
+	margin:22px;
+	width:175px;
+	height:175px;
+	float:left;
+	background-color:#FFF;
+	border: 2px solid #182945;
+	-moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    border-radius: 20px;
+}
+.name{
+	color:#666;
+	text-align:center;
+	width:145px;
+	margin:7px 15px;
+}
+.photo{
+	height:113px;
+}
+.photo img{
+	max-width:175;
+	max-height:140;
+	margin:auto;
+}
+.price_bg{
+	margin:0;
+	width:175px;
+	height:30px;
+	background-color:#46A5E5;
+	border: 1px solid #46A5E5;
+	-moz-border-radius: 0px 0px 20px 20px;
+    -webkit-border-radius: 0px 0px 20px 20px;
+    -khtml-border-radius: 0px 0px 20px 20px;
+    border-radius: 0px 0px 20px 20px;
+}
+.price{
+	color:#FFF;
+	text-align:center;
+	margin:7px 15px;
+}
+
+.rounded-corners {
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    border-radius: 20px;
 }
 
 pre {
@@ -26,13 +117,14 @@ div.field, div.actions {
 
 .field_with_errors {
   padding: 2px;
-  background-color: red;
+  background-color:#c00;
+  color:#FFF;
   display: table;
 }
 
 #error_explanation {
   width: 450px;
-  border: 2px solid red;
+  border: 2px solid #c00;
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
@@ -46,8 +138,9 @@ div.field, div.actions {
   font-size: 12px;
   margin: -7px;
   margin-bottom: 0px;
-  background-color: #c00;
-  color: #fff;
+  /*background-color: #c00;
+  color: #fff;*/
+  color:#c00;
 }
 
 #error_explanation ul li {

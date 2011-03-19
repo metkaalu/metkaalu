@@ -28,7 +28,7 @@ GEM
       activemodel (= 3.0.5)
       activesupport (= 3.0.5)
     activesupport (3.0.5)
-    arel (2.0.6)
+    arel (2.0.9)
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -39,9 +39,10 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
-    mysql (2.8.1-x86-mingw32)
+    mysql2 (0.2.6)
+    mysql2 (0.2.6-x86-mingw32)
     polyglot (0.3.1)
-    rack (1.2.1)
+    rack (1.2.2)
     rack-mount (0.6.13)
       rack (>= 1.0.0)
     rack-test (0.5.7)
@@ -63,12 +64,12 @@ GEM
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
-    tzinfo (0.3.23)
+    tzinfo (0.3.25)
 
 PLATFORMS
   ruby
   x86-mingw32
 
 DEPENDENCIES
-  mysql
+  mysql2
   rails (= 3.0.5)

@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   belongs_to :store
+  validates :name, :presence => true
   validates :name, :uniqueness => true
   validates :description, :presence => true
   def self.search(query,idStore)

@@ -14,6 +14,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def show_all
+    @products = Product.search(params[:query], params[:store_id])
+  end
+
   # GET /products/1
   # GET /products/1.xml
   def show

@@ -1,5 +1,7 @@
 Metkaalu::Application.routes.draw do
 
+  get "product_images/product_image"
+
   resources :stores do
     resources :products
   end

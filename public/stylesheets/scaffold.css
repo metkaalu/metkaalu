@@ -54,3 +54,7 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+#attachment_list #pending_files{ list-style:none;padding:0; }
+#attachment_list li { padding:0 0 0.5em 21px;background:url('/images/attachment.png') no-repeat 0 2px; }
+#attachment_list li #remove { margin-left:1em; }

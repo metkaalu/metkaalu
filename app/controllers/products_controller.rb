@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.xml
 
+  before_filter :confirm_logged_in
   before_filter :find_store
 
   def index
@@ -32,8 +33,9 @@ class ProductsController < ApplicationController
   # GET /products/new
   # GET /products/new.xml
   def new
-    @product = Product.new(:store_id => @store.id)
-        
+    @product = Product.new(:store_id => @store.id)    
+    #@product.product_images.build
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @product }
@@ -51,6 +53,8 @@ class ProductsController < ApplicationController
     # @product = Product.new(params[:product])
     @product = @store.products.new(params[:product])
 
+    process_file_uploads(@product)
+
     respond_to do |format|
       if @product.save
         flash[:notice] = 'Product was successfully created.'
@@ -67,7 +71,7 @@ class ProductsController < ApplicationController
   # PUT /products/1.xml
   def update
     @product = Product.find(params[:id])
-
+    process_file_uploads(@product)
     respond_to do |format|
       if @product.update_attributes(params[:product])
         flash[:notice] = 'Product was successfully updated.'
@@ -98,4 +102,15 @@ class ProductsController < ApplicationController
       @store = Store.find_by_id(params[:store_id])
     end
   end
+
+  #Montar todos los archivos
+  protected
+  def process_file_uploads(product)
+      i = 0
+      while params[:attachment]['file_'+i.to_s] != "" && !params[:attachment]['file_'+i.to_s].nil?
+          product.product_image.build(:image => params[:attachment]['file_'+i.to_s])
+          i += 1
+      end
+  end
+
 end

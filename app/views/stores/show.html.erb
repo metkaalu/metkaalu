@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= image_tag @store.logo.url %>
 <p>
   <b>Name:</b>
   <%= @store.name %>
@@ -58,4 +58,5 @@
 
 <%= link_to 'Edit', edit_store_path(@store) %> |
 <%= link_to 'Back', stores_path %> |
+<%= link_to 'Show Products', store_products_path(@store) %> |
 <%= link_to 'Create Product', new_store_product_path(@store) %>

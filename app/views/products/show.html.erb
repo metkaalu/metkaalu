@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
-
+<p><b>Images</b>
+  
+  <% @product.product_image.each do |foto| %>
+    <div>
+      <%= image_tag foto.image.url %>
+    </div>
+  <%end%>
+</p>
 <p>
   <b>Name:</b>
   <%= @product.name %>

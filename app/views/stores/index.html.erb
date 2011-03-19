@@ -1,5 +1,8 @@
-<h1>Listing stores</h1>
-
+<h1>Stores</h1>
+<% form_tag stores_path, :method => 'get' do %>
+  <%= text_field_tag :query, params[:query] %>
+  <%= submit_tag "Search", :name => nil %>
+<%end%>
 <table>
   <tr>
     <th>Name</th>

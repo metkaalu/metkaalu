@@ -2,7 +2,7 @@ class StoresController < ApplicationController
   # GET /stores
   # GET /stores.xml
   def index
-    @stores = Store.all
+    @stores = Store.search(params[:query])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,4 +80,5 @@ class StoresController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
 end

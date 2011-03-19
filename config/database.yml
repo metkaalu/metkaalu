@@ -6,7 +6,7 @@
 # And be sure to use new-style password hashing:
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 development:
-  adapter: mysql2
+  adapter: mysql
   encoding: utf8
   reconnect: false
   database: metkaalu_development
@@ -35,5 +35,5 @@ production:
   database: metkaalu_production
   pool: 5
   username: root
-  password:
+  password: admin
   socket: /tmp/mysql.sock

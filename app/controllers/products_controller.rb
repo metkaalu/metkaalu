@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.xml
 
+  before_filter :confirm_logged_in
   before_filter :find_store
 
   def index

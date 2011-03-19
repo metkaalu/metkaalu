@@ -1,4 +1,7 @@
 class StoresController < ApplicationController
+
+  before_filter :confirm_logged_in
+
   # GET /stores
   # GET /stores.xml
   def index

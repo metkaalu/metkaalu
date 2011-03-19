@@ -10,12 +10,42 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110226193347) do
+ActiveRecord::Schema.define(:version => 20110319173557) do
 
-# Could not dump table "products" because of following ArgumentError
-#   invalid date
+  create_table "products", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.float    "price"
+    t.string   "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "store_id"
+  end
 
-# Could not dump table "stores" because of following ArgumentError
-#   invalid date
+  create_table "stores", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "address"
+    t.string   "country"
+    t.string   "state"
+    t.string   "city"
+    t.string   "zip"
+    t.string   "phone"
+    t.string   "logo"
+    t.string   "currency"
+    t.string   "permalink"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "full_name",       :limit => 100
+    t.string   "email",                          :default => "", :null => false
+    t.string   "hashed_password", :limit => 40
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "salt"
+    t.string   "username"
+  end
 
 end

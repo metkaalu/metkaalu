@@ -1,4 +1,4 @@
-<%= form_for([@store, @product]) do |f| %>
+<%= form_for([@store, @product],  :html => { :multipart => true }) do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -22,7 +22,7 @@
 <div>
   <p>Upload Product Images:</p>
 </div>
-  <%= f.fields_for :product_images do |builder|  %>
+  <%= f.fields_for :product_image do |builder|  %>
      <input id="newfile_data" type="file" />
 
       <div id="attachment_list"><ul id="pending_files"></ul></div>
@@ -37,8 +37,8 @@
     <%= f.text_field :price %>
   </div>
   <div class="field">
-    <%= f.label :category %><br />
-    <%= f.text_field :category %>
+    <%= f.label :categories %><br />
+    <%= select_tag("category_ids[]", options_for_select(Category.find(:all).collect { |cat| [cat.name, cat.id] }, @product.categories.collect { |cat| cat.id}), {:multiple=>true, :size=>6})%>
   </div>
   <div class="actions">
     <%= f.submit %>

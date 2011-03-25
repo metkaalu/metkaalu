@@ -59,7 +59,7 @@
     <%= f.label :categories %><br />
     <%= select_tag("category_ids[]", options_for_select(Category.find(:all).collect { |cat| [cat.name, cat.id] }, @store.categories.collect { |cat| cat.id}), {:multiple=>true, :size=>6})%>
   </div>
-  <div class="actions">
+  <div class="form_actions">
     <%= f.submit %>
   </div>
 <% end %>

@@ -59,6 +59,15 @@ body, p, ol, ul, td {
     -khtml-border-radius: 20px;
     border-radius: 20px;
 }
+.store img{
+	margin:0;
+	background-color:none;
+	border: none;
+	-moz-border-radius: 0px 0px 20px 20px;
+    -webkit-border-radius: 0px 0px 20px 20px;
+    -khtml-border-radius: 0px 0px 20px 20px;
+    border-radius: 0px 0px 20px 20px;
+}
 .name{
 	color:#666;
 	text-align:center;
@@ -89,7 +98,39 @@ body, p, ol, ul, td {
 	text-align:center;
 	margin:7px 15px;
 }
-
+.actions{
+	background:#000;
+	width:145px;
+	height:135px;
+	position:absolute;
+	visibility:hidden;
+	top:-2px;
+	left:-2px;
+	border: 2px solid #000;
+	-moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    border-radius: 20px;
+	filter:alpha(opacity=80);
+    -moz-opacity:0.8;
+    -khtml-opacity: 0.8;
+    opacity: 0.8;
+	padding:20px 15px;
+	overflow:hidden;
+}
+.actions a{
+	font:12px bold #FFF "Myriad Pro" Arial, Helvetica, sans-serif;
+	text-decoration:none;
+	margin: 20px auto;
+	color:#FFF;
+	display:block;
+	text-align:center;
+}
+.admin_actions{
+	float:left;
+	color:182945;
+	width:800px;
+}
 .rounded-corners {
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
@@ -102,11 +143,11 @@ pre {
   padding: 10px;
   font-size: 11px;
 }
-
+/*
 a { color: #000; }
 a:visited { color: #666; }
 a:hover { color: #fff; background-color:#000; }
-
+*/
 div.field, div.actions {
   margin-bottom: 10px;
 }

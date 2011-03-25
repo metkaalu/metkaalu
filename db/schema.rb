@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(:version => 20110320165809) do
     t.string   "store_id"
   end
 
-
   create_table "store_categories", :force => true do |t|
     t.integer  "store_id"
     t.integer  "category_id"
@@ -64,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20110320165809) do
     t.string   "name"
     t.string   "description"
     t.string   "address"
+    t.string   "country"
     t.string   "state"
     t.string   "city"
     t.string   "zip"

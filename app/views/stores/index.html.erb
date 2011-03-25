@@ -7,43 +7,33 @@
   
   <%= submit_tag "Search", :name => nil %>
 <%end%>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Address</th>
-    <th>Country</th>
-    <th>State</th>
-    <th>City</th>
-    <th>Zip</th>
-    <th>Phone</th>
-    <th>Currency</th>
-    <th>Permalink</th>
-    <th></th>
-    <th></th>
-    <th></th>
-	<th></th>
-  </tr>
 
+<div class="port">
+<h1>Stores</h1>
+<% i = 1%>
 <% @stores.each do |store| %>
-  <tr>
-    <td><%= store.name %></td>
-    <td><%= store.description %></td>
-    <td><%= store.address %></td>
-    <td><%= store.country_name %></td>
-    <td><%= store.state %></td>
-    <td><%= store.city %></td>
-    <td><%= store.zip %></td>
-    <td><%= store.phone %></td>
-    <td><%= store.currency %></td>
-    <td><%= link_to store.permalink, 'http://' + store.permalink  %></td>
-    <td><%= link_to 'Show', store %></td>
-    <td><%= link_to 'Edit', edit_store_path(store) %></td>
-    <td><%= link_to 'Destroy', store, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+
+	<div class="store" onmouseover="ShowActions('store<%= i%>');return true">
+		<div class="actions" id="store<%= i%>" onmouseout="HideActions('store<%= i%>');return true">
+			<%= link_to 'Show', store %>
+			<%= link_to 'Edit', edit_store_path(store) %>
+			<%= link_to 'Destroy', store, :confirm => 'Are you sure?', :method => :delete %>
+		</div>
+    	<div class="name"><%= store.name %></div>
+        <div class="photo">
+          <%if store.logo.exists?%>
+                <%= link_to(image_tag(store.logo.url, :size =>'175x145'), store) %>
+          <% end %>
+          
+        </div>
+    </div>
+<% i = i + 1 %>
 <% end %>
-</table>
 
-<br />
-
+<div class="admin_actions">
 <%= link_to 'New Store', new_store_path %>
+</div>
+</div>
+
+
+

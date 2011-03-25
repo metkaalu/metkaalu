@@ -12,16 +12,6 @@
 
 ActiveRecord::Schema.define(:version => 20110319173557) do
 
-  create_table "products", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.float    "price"
-    t.string   "category"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "store_id"
-  end
-
   create_table "product_images", :force => true do |t|
     t.string   "caption"
     t.integer  "product_id"
@@ -31,6 +21,16 @@ ActiveRecord::Schema.define(:version => 20110319173557) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "products", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.float    "price"
+    t.string   "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "store_id"
   end
 
   create_table "stores", :force => true do |t|
@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(:version => 20110319173557) do
     t.string   "permalink"
     t.datetime "created_at"
     t.datetime "updated_at"
-
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"

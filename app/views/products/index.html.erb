@@ -3,19 +3,32 @@
   <%= submit_tag "Search", :name => nil %>
 <%end%>
 
-<div class="port">
-
 <h1>Products</h1>
 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Category</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
 <% @products.each do |product| %>
-
-	<div class="product">
-    	<div class="name"><%= product.name %></div>
-        <div class="photo"><%= image_tag product.product_image.url %></div>
-        <div class="price_bg"><div class="price">$<%= product.price %></div></div>
-    </div>
-
+  <tr>
+    <td><%= product.name %></td>
+    <td><%= product.description %></td>
+    <td><%= product.price %></td>
+    <td><%= product.category %></td>
+    <td><%= link_to('Show', {:action => 'show', :id => product.id, :store_id => @store.id}) %></td>
+    <td><%= link_to('Edit', {:action => 'edit', :id => product.id, :store_id => @store.id}) %></td>
+    <td><%= link_to('Destroy', {:action => 'destroy', :id => product.id, :store_id => @store.id}, :confirm => 'Are you sure?', :method => :delete) %></td>
+  </tr>
 <% end %>
+</table>
 
-</div>
+<br />
+
 <%= link_to 'New Product', new_store_product_path(@store) %>

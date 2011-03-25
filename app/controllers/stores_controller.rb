@@ -5,8 +5,12 @@ class StoresController < ApplicationController
   # GET /stores
   # GET /stores.xml
   def index
-    @stores = Store.search(params[:query])
-
+    @country_id =''
+    unless params[:country].nil?
+      @country_id = params[:country][:country_id]
+    end    
+    @stores = Store.search(params[:query],@country_id)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @stores }
@@ -44,7 +48,7 @@ class StoresController < ApplicationController
   # POST /stores.xml
   def create
     @store = Store.new(params[:store])
-
+    @store.categories = Category.find(params[:category_ids]) if params[:category_ids]
     respond_to do |format|
       if @store.save
         format.html { redirect_to(@store, :notice => 'Store was successfully created.') }
@@ -60,7 +64,7 @@ class StoresController < ApplicationController
   # PUT /stores/1.xml
   def update
     @store = Store.find(params[:id])
-
+    @store.categories = Category.find(params[:category_ids]) if params[:category_ids]
     respond_to do |format|
       if @store.update_attributes(params[:store])
         format.html { redirect_to(@store, :notice => 'Store was successfully updated.') }

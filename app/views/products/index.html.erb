@@ -5,16 +5,23 @@
 
 <h1>Products</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Category</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<% @products.each do |product| %>
+
+	<div class="product">
+    	<div class="name"><%= product.name %></div>
+        <div class="photo">
+          <%if product.product_images.exists?%>
+            <% for image in product.product_images.limit(1) %>
+                <%= image_tag image.image.url, :size =>'125x110' %>
+
+            <%end%>
+          <% end %>
+          
+        </div>
+        <div class="price_bg"><div class="price">$<%= product.price %></div></div>
+        <%= link_to 'Show', store_product_path(@store,product.id) %>
+        <%= link_to 'Edit', edit_store_product_path(@store,product.id) %>
+    </div>
 
 <% @products.each do |product| %>
   <tr>
@@ -31,4 +38,6 @@
 
 <br />
 
-<%= link_to 'New Product', new_store_product_path(@store) %>
+</div>
+<%= link_to 'New Product', new_store_product_path(@store) %> |
+<%= link_to 'Back To Store', store_path(@store) %>

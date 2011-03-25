@@ -1,8 +1,8 @@
 class ProductImage < ActiveRecord::Base
   belongs_to :product
   has_attached_file :image,
-    :url => "images/products/:attachment/:id/:style/:basename/.:extension",
-    :path => "#{Rails.root}/public/images/images/products/:attachment/:id/:style/:filename"
+    :url => "/attachments/store/:store/products/:id/:style/:basename.:extension",
+    :path => "#{Rails.root}/public/attachments/store/:store/products/:id/:style/:basename.:extension"
   
   validates_attachment_presence :image
   validates_attachment_size :image, :less_than => 5.megabytes

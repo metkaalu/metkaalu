@@ -9,7 +9,14 @@
   <b>Description:</b>
   <%= @store.description %>
 </p>
-
+<p>
+  <b>Categories:</b>
+  <ul>
+    <% @store.categories.each do |cat|   %>
+    <li> <%= cat.name %> </li>
+    <%end%>
+  </ul>
+</p>
 <p>
   <b>Address:</b>
   <%= @store.address %>
@@ -17,7 +24,7 @@
 
 <p>
   <b>Country:</b>
-  <%= @store.country %>
+  <%= @store.country_name %>
 </p>
 
 <p>
@@ -41,18 +48,13 @@
 </p>
 
 <p>
-  <b>Logo:</b>
-  <%= @store.logo %>
-</p>
-
-<p>
   <b>Currency:</b>
   <%= @store.currency %>
 </p>
 
 <p>
   <b>Permalink:</b>
-  <%= @store.permalink %>
+  <%= link_to  @store.permalink %>
 </p>
 
 

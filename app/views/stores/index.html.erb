@@ -1,6 +1,10 @@
 <h1>Stores</h1>
 <% form_tag stores_path, :method => 'get' do %>
+<div>
   <%= text_field_tag :query, params[:query] %>
+  <%= collection_select :country, :country_id, Country.all, :id, :name, :prompt =>'Select a Country' %>
+</div>
+  
   <%= submit_tag "Search", :name => nil %>
 <%end%>
 <table>
@@ -13,7 +17,6 @@
     <th>City</th>
     <th>Zip</th>
     <th>Phone</th>
-    <th>Logo</th>
     <th>Currency</th>
     <th>Permalink</th>
     <th></th>
@@ -27,14 +30,13 @@
     <td><%= store.name %></td>
     <td><%= store.description %></td>
     <td><%= store.address %></td>
-    <td><%= store.country %></td>
+    <td><%= store.country_name %></td>
     <td><%= store.state %></td>
     <td><%= store.city %></td>
     <td><%= store.zip %></td>
     <td><%= store.phone %></td>
-    <td><%= store.logo %></td>
     <td><%= store.currency %></td>
-    <td><%= store.permalink %></td>
+    <td><%= link_to store.permalink, 'http://' + store.permalink  %></td>
     <td><%= link_to 'Show', store %></td>
     <td><%= link_to 'Edit', edit_store_path(store) %></td>
     <td><%= link_to 'Destroy', store, :confirm => 'Are you sure?', :method => :delete %></td>

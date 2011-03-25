@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.search(params[:query], params[:store_id])
+    #@store.products = @products
     # @products = Product.where(:store_id => @store.id)
 
     respond_to do |format|
@@ -34,7 +35,7 @@ class ProductsController < ApplicationController
   # GET /products/new.xml
   def new
     @product = Product.new(:store_id => @store.id)    
-    #@product.product_images.build
+    @product_images = @product.product_images.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,6 +46,7 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    @product_images = @product.product_images.new
   end
 
   # POST /products
@@ -52,7 +54,7 @@ class ProductsController < ApplicationController
   def create
     # @product = Product.new(params[:product])
     @product = @store.products.new(params[:product])
-
+    @product.categories = Category.find(params[:category_ids]) if params[:category_ids]
     process_file_uploads(@product)
 
     respond_to do |format|
@@ -71,6 +73,7 @@ class ProductsController < ApplicationController
   # PUT /products/1.xml
   def update
     @product = Product.find(params[:id])
+    @product.categories = Category.find(params[:category_ids]) if params[:category_ids]
     process_file_uploads(@product)
     respond_to do |format|
       if @product.update_attributes(params[:product])
@@ -83,7 +86,7 @@ class ProductsController < ApplicationController
       end
     end
   end
-
+  
   # DELETE /products/1
   # DELETE /products/1.xml
   def destroy
@@ -107,9 +110,11 @@ class ProductsController < ApplicationController
   protected
   def process_file_uploads(product)
       i = 0
-      while params[:attachment]['file_'+i.to_s] != "" && !params[:attachment]['file_'+i.to_s].nil?
-          product.product_image.build(:image => params[:attachment]['file_'+i.to_s])
-          i += 1
+      if !params[:attachment].nil?
+        while params[:attachment]['file_'+i.to_s] != "" && !params[:attachment]['file_'+i.to_s].nil?
+            product.product_images.build(:image => params[:attachment]['file_'+i.to_s])
+            i += 1
+        end
       end
   end
 

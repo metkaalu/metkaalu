@@ -2,11 +2,18 @@
 <p><b>Images</b>
 <div style="border-style:dashed; ">
    <%if @product.product_images.exists?%>
-    <% @product.product_images.each do |foto| %>
-      <div>
-        <%= image_tag foto.image.url, :size=>'150x150' %>
-      </div>
-    <%end%>
+
+     <ul id="img_list">
+
+      <% @product_images.each do |foto| %>
+
+        <% content_tag_for :li,foto, :class =>"image_list" do %>
+          <%= image_tag foto.image.url, :size=>'150x150' %>
+        <%end%>
+
+      <%end%>
+
+     </ul>
   <% end %>
   </div>
 </p>

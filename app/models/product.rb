@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
   belongs_to :store
-  has_many :product_categories
+  has_many :product_categories, :order => "product_categories.position ASC"
   has_many :categories, :through => :product_categories
   validates :name, :presence => true
   has_many :product_images, :dependent => :destroy

@@ -17,9 +17,10 @@
     	<div class="name"><%= product.name %></div>
         <div class="photo">
           <%if product.product_images.exists?%>
-            <% for image in product.product_images.limit(1) %>
+            <% for image in product.product_images %>
+              <% if image.position.eql?(1) %>
                 <%= link_to(image_tag(image.image.url, :size =>'175x115'), {:action => 'show', :id => product.id, :store_id => @store.id}) %>
-
+              <%end%>
             <%end%>
           <% end %>
           

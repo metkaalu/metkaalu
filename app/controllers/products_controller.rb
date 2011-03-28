@@ -24,7 +24,8 @@ class ProductsController < ApplicationController
   # GET /products/1.xml
   def show
     @product = Product.find(params[:id])
-
+    @product_images = @product.product_images.order('product_images.position ASC')
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @product }
@@ -46,7 +47,7 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
-    @product_images = @product.product_images.new
+    @product_images = @product.product_images.order('product_images.position ASC')
   end
 
   # POST /products
@@ -99,6 +100,13 @@ class ProductsController < ApplicationController
     end
   end
 
+  def sort    
+    params[:img_list].each_with_index do |id, index|
+      ProductImage.update_all(['position=?', index+1], ['id=?', id])
+    end
+    render :nothing => true
+  end
+
   private
   def find_store
     if params[:store_id]
@@ -112,10 +120,11 @@ class ProductsController < ApplicationController
       i = 0
       if !params[:attachment].nil?
         while params[:attachment]['file_'+i.to_s] != "" && !params[:attachment]['file_'+i.to_s].nil?
-            product.product_images.build(:image => params[:attachment]['file_'+i.to_s])
+            product.product_images.build(:image => params[:attachment]['file_'+i.to_s], :position => i+1)
             i += 1
         end
       end
   end
-
+  
+  
 end

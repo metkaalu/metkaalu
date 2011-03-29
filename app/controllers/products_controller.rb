@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
   # GET /products/new.xml
   def new
     @product = Product.new(:store_id => @store.id)    
-    @product_images = @product.product_images.new
+    @product_images = []
 
     respond_to do |format|
       format.html # new.html.erb

@@ -38,26 +38,23 @@
       </script>
 
    <%end%>
-   <%= f.label "Uploaded Images" %><br />
+      
+   <%if @product_images.length > 0 %>
+     <%= f.label "Uploaded Images" %><br />
+     <div style="border-style:dashed; width: 1050px;">
+       <ul id="img_list">
+         <% @product_images.each do |foto| %>
 
-   <div style="border-style:dashed; width: 1050px; ">
-   <%if @product_images.exists?%>
-     
-     <ul id="img_list">
-
-      <% @product_images.each do |foto| %>
-
-        <% content_tag_for :li,foto, :class =>"image_list" do %>
-          <span class="handle">[M]</span>
-          <%= image_tag foto.image.url, :size=>'150x150' %>
-        <%end%>
+           <% content_tag_for :li,foto, :class =>"image_list" do %>
+             <span class="handle">[M]</span>
+             <%= image_tag foto.image.url, :size=>'150x150' %>
+           <%end%>
           
-      <%end%>
-
-     </ul>
-     <%= sortable_element "img_list", {:url => sort_store_products_path, :constraint => :horizontal,:handle => "handle"}  %>
+          <%end%>
+       </ul>
+       <%= sortable_element "img_list", {:url => sort_store_products_path, :constraint => :horizontal,:handle => "handle"}  %>
+     </div>
   <% end %>
-  </div>
    
    <br />
 

@@ -3,6 +3,7 @@ class Store < ActiveRecord::Base
   has_many :store_categories
   has_many :categories, :through => :store_categories
   belongs_to :country
+  belongs_to :user
   has_attached_file :logo ,
     :url => "/attachments/store/:id/logo/:style/:basename.:extension",
     :path => "#{Rails.root}/public/attachments/store/:id/logo/:style/:basename.:extension"

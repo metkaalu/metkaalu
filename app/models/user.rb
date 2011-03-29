@@ -1,6 +1,8 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
 
+  has_many :stores
+
   attr_accessor :password
 
   validates :full_name, :presence => true

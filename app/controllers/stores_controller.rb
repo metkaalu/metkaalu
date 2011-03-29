@@ -48,6 +48,7 @@ class StoresController < ApplicationController
   # POST /stores.xml
   def create
     @store = Store.new(params[:store])
+    @store.user_id = @user.id
     @store.categories = Category.find(params[:category_ids]) if params[:category_ids]
     respond_to do |format|
       if @store.save

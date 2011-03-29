@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
       redirect_to(:controller => 'access', :action => 'login')
       return false # halts the before_filter
     else
+      @user = User.find_by_id(session[:user_id])
       return true
     end
   end

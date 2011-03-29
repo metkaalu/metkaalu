@@ -6,13 +6,13 @@
 # And be sure to use new-style password hashing:
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 development:
-  adapter: mysql
+  adapter: mysql2
   encoding: utf8
   reconnect: false
   database: metkaalu_development
   pool: 5
   username: root
-  password: admin
+  password: miclita
   socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and

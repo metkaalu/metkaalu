@@ -1,5 +1,8 @@
 Metkaalu::Application.routes.draw do
 
+  match 'login', :to => 'access#login'
+  match 'signup', :to => 'users#new'
+
   get "product_images/product_image"
 
   resources :stores do

@@ -7,13 +7,9 @@ Metkaalu::Application.routes.draw do
 
   resources :stores do
     resources :products do
-      post :sort, on: :collection
+      post :sort, :on => :collection
     end
   end
-
-
-
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

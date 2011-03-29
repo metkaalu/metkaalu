@@ -4,18 +4,34 @@
 <%end%>
 
 <div class="port">
-
 <h1>Products</h1>
-
+<% i = 1%>
 <% @products.each do |product| %>
 
-	<div class="product">
+	<div class="product" onmouseover="ShowActions('product<%= i%>');return true">
+		<div class="actions" id="product<%= i%>" onmouseout="HideActions('product<%= i%>');return true">
+			<%= link_to('Show', {:action => 'show', :id => product.id, :store_id => @store.id}) %>
+			<%= link_to('Edit', {:action => 'edit', :id => product.id, :store_id => @store.id}) %>
+			<%= link_to('Destroy', {:action => 'destroy', :id => product.id, :store_id => @store.id}, :confirm => 'Are you sure?', :method => :delete) %>
+		</div>
     	<div class="name"><%= product.name %></div>
-        <div class="photo"><%= image_tag product.product_image.url %></div>
+        <div class="photo">
+          <%if product.product_images.exists?%>
+            <% for image in product.product_images %>
+              <% if image.position.eql?(1) %>
+                <%= link_to(image_tag(image.image.url, :size =>'175x115'), {:action => 'show', :id => product.id, :store_id => @store.id}) %>
+              <%end%>
+            <%end%>
+          <% end %>
+          
+        </div>
         <div class="price_bg"><div class="price">$<%= product.price %></div></div>
     </div>
-
+<% i = i + 1 %>
 <% end %>
 
+<div class="admin_actions">
+<%= link_to 'New Product', new_store_product_path(@store) %> |
+<%= link_to 'Back To Store', store_path(@store) %>
 </div>
-<%= link_to 'New Product', new_store_product_path(@store) %>
+</div>

@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :country %><br />
-    <%= f.text_field :country %>
+    <%= collection_select :store, :country_id, Country.all, :id, :name, :prompt =>'Select a Country' %>
   </div>
   <div class="field">
     <%= f.label :state %><br />
@@ -55,7 +55,11 @@
     <%= f.label :permalink %><br />
     <%= f.text_field :permalink %>
   </div>
-  <div class="actions">
+  <div class="field">
+    <%= f.label :categories %><br />
+    <%= select_tag("category_ids[]", options_for_select(Category.find(:all).collect { |cat| [cat.name, cat.id] }, @store.categories.collect { |cat| cat.id}), {:multiple=>true, :size=>6})%>
+  </div>
+  <div class="form_actions">
     <%= f.submit %>
   </div>
 <% end %>

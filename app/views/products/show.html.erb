@@ -1,12 +1,23 @@
 <p id="notice"><%= notice %></p>
 <p><b>Images</b>
-  
-  <% @product.product_image.each do |foto| %>
-    <div>
-      <%= image_tag foto.image.url %>
-    </div>
-  <%end%>
+<div style="border-style:dashed; ">
+   <%if @product.product_images.exists?%>
+
+     <ul id="img_list">
+
+      <% @product_images.each do |foto| %>
+
+        <% content_tag_for :li,foto, :class =>"image_list" do %>
+          <%= image_tag foto.image.url, :size=>'150x150' %>
+        <%end%>
+
+      <%end%>
+
+     </ul>
+  <% end %>
+  </div>
 </p>
+<div>
 <p>
   <b>Name:</b>
   <%= @product.name %>
@@ -16,7 +27,12 @@
   <b>Description:</b>
   <%= @product.description %>
 </p>
-
+<b>Categories:</b>
+  <ul>
+    <% @product.categories.each do |cat|   %>
+    <li> <%= cat.name %> </li>
+    <%end%>
+  </ul>
 <p>
   <b>Price:</b>
   <%= @product.price %>
@@ -26,7 +42,7 @@
   <b>Category:</b>
   <%= @product.category %>
 </p>
-
+</div>
 
 <%= link_to 'Edit', edit_store_product_path(@store) %> |
 <%= link_to 'Back', store_products_path %>

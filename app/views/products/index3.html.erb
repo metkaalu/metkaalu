@@ -1,0 +1,23 @@
+<% form_tag store_products_path, :method => 'get' do%>
+  <%= text_field_tag :query %>
+  <%= submit_tag "Search", :name => nil %>
+<%end%>
+
+<div class="port">
+
+<h1>Products</h1>
+
+<% @products.each do |product| %>
+
+	<div class="product">
+    	<div class="name"><%= product.name %></div>
+        <div class="photo">
+        	
+        </div>
+        <div class="price_bg"><div class="price">$<%= product.price %></div></div>
+    </div>
+
+<% end %>
+
+</div>
+<%= link_to 'New Product', new_store_product_path(@store) %>
